@@ -3,7 +3,7 @@ Given a string s, find the length of the longest substring without repeating cha
 '''
 
 
-def lengthOfLongestSubstring(s: str) -> int:
+def lengthOfLongestSubstringLOGAN(s: str) -> int:
     '''
     Strategy: Store all possible solutions, find the longest one
     '''
@@ -23,15 +23,21 @@ def lengthOfLongestSubstring(s: str) -> int:
     return greatest
 
 def lengthOfLongestSubstringCORRECT(s):
+    '''
+    Credit to: https://leetcode.com/Google/
+    '''
     start = max_length = 0 
-    usedChar = {} # Maps char : number
+    used_char = {} # Maps char : number
     
     for i in range(len(s)):
-        if s[i] in usedChar and start <= usedChar[s[i]]:
-            start = usedChar[s[i]] + 1
+        if s[i] in used_char and start <= used_char[s[i]]: # check if the current substring has a repeating character, then check if the head
+            # of the current substring is less than or equal to the index of last repeated character, the second check is important
+            # because we don't clear the dictionary and don't want to be stopped by an old repeated character
+            start = used_char[s[i]] + 1 # set the new head to the chatacter after
         else:
-            max_length = max(max_length, i - start + 1)
+            max_length = max(max_length, i - start + 1) # the solution is either the current solution or 
+            # the distance between the pointer and the start of the current substring + 1 (the length of the substring)
 
-        usedChar[s[i]] = i
+        used_char[s[i]] = i
 
     return max_length
