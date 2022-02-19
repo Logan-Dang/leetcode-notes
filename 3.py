@@ -19,8 +19,7 @@ def lengthOfLongestSubstring(s: str) -> int:
     print(bank)
     greatest = 0
     for sub in bank:
-        if len(sub) > greatest:
-            greatest = len(sub)
+        greatest = max(greatest, len(sub))
     return greatest
 
 def lengthOfLongestSubstringCORRECT(s):
