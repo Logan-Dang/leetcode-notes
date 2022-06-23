@@ -1,5 +1,6 @@
 class Solution:
     def searchInsert(self, nums: list[int], target: int) -> int:
+        '''O(lg n) divide-and-conquer (binary search)'''
         first, last = 0, len(nums) # Use pointers for array
         while (first != last):
             mid = (first + last) // 2

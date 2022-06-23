@@ -1,5 +1,6 @@
 class Solution:
     def searchInsert(self, nums: list[int], target: int) -> int:
+        '''O(lg n) divide-and-conquer (binary search)'''
         first = 0
         last = len(nums) # Use pointers for array
         return self.searchRecurse(nums, target, first, last)
